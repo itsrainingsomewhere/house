@@ -1,8 +1,12 @@
+// Variables
+$size-ball: 20px;
+
+// Style
 body {
   margin: 0;
   height: 100vh;
   background-color: #bd1060;
-  overflow: hidden;
+  overflow:hidden;  
 }
 * {
   margin: 0;
@@ -26,39 +30,32 @@ body {
   z-index: 2;
   text-align: center;
 }
+
+@mixin ball($top: 50%, $left: 50%, $color: yellow, $zindex: 3){
+  top: $top;
+  left: $left;
+  background: $color;
+  z-index: $zindex;
+}
+
 .parallax-wrap span {
   position: absolute;
-  height: 20px;
-  width: 20px;
+  height: $size-ball;
+  width: $size-ball;
   border-radius: 100%;
-}
-.parallax-wrap span:nth-child(1) {
-  top: 70%;
-  left: 70%;
-  background: blue;
-  z-index: 3;
-}
-.parallax-wrap span:nth-child(2) {
-  top: 60%;
-  left: 80%;
-  background: yellow;
-  z-index: 3;
-}
-.parallax-wrap span:nth-child(3) {
-  top: 40%;
-  left: 60%;
-  background: green;
-  z-index: 3;
-}
-.parallax-wrap span:nth-child(4) {
-  top: 70%;
-  left: 40%;
-  background: red;
-  z-index: 3;
-}
-.parallax-wrap span:nth-child(5) {
-  top: 40%;
-  left: 30%;
-  background: purple;
-  z-index: 3;
+  &:nth-child(1){
+    @include ball(70%, 70%, blue);
+  }
+  &:nth-child(2){
+    @include ball(60%, 80%, yellow);
+  }
+  &:nth-child(3){
+    @include ball(40%, 60%, green);
+  }
+  &:nth-child(4){
+    @include ball(70%, 40%, red);
+  }
+  &:nth-child(5){
+    @include ball(40%, 30%, purple);
+  }
 }
